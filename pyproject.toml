@@ -1,0 +1,61 @@
+[project]
+name = "devradar"
+version = "0.1.0"
+description = "AI-powered developer intelligence radar — aggregate, analyze, and track tech trends"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.9"
+authors = [
+    {name = "Chaobs"}
+]
+keywords = ["developer-tools", "tech-radar", "github-trending", "ai", "cli", "hacker-news"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Topic :: Software Development",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+]
+
+dependencies = [
+    "httpx>=0.27",
+    "rich>=13.0",
+    "click>=8.1",
+    "pydantic>=2.0",
+    "jinja2>=3.1",
+    "feedparser>=6.0",
+    "beautifulsoup4>=4.12",
+]
+
+[project.optional-dependencies]
+ai = [
+    "openai>=1.0",
+]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "ruff>=0.1",
+]
+
+[project.scripts]
+devradar = "devradar.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/chaobs/devradar"
+Repository = "https://github.com/chaobs/devradar"
+
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["devradar*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
